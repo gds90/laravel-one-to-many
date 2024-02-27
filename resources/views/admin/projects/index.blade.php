@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                         @foreach ($projects as $project)
-                            <tr class="align-content-center">
+                            <tr>
                                 <td>{{ $project->id }}</td>
                                 <td>{{ $project->title }}</td>
                                 <td>{{ $project->type ? $project->type->name : 'Non precisato' }}</td>
