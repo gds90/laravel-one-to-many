@@ -31,17 +31,16 @@
                                 <td>{{ $type->slug }}</td>
                                 <td>
                                     <div class="d-flex">
-
                                         <a href="{{ route('admin.types.show', ['type' => $type->slug]) }}"
                                             class="btn btn-sm btn-outline-secondary">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </a>
                                         <a href="{{ route('admin.types.edit', ['type' => $type->slug]) }}"
                                             class="btn btn-sm btn-outline-warning ms-1" data-bs-toggle="modal"
-                                            data-bs-target="#modal_type_edit">
+                                            data-bs-target="#modal_type_edit-{{ $type->slug }}">
                                             <i class="fa-solid fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('admin.types.destroy', ['type' => $type->id]) }}"
+                                        <a href="{{ route('admin.types.destroy', ['type' => $type->slug]) }}"
                                             class="btn btn-sm btn-outline-danger ms-1" data-bs-toggle="modal"
                                             data-bs-target="#modal_type_delete-{{ $type->slug }}">
                                             <i class="fa-solid fa-trash"></i>

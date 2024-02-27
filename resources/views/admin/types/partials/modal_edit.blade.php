@@ -1,4 +1,5 @@
-<div class="modal fade" id="modal_type_edit" tabindex="-1" aria-labelledby="modal_type_edit" aria-hidden="true">
+<div class="modal fade" id="modal_type_edit-{{ $type->slug }}" tabindex="-1" aria-labelledby="modal_type_edit"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,6 +9,7 @@
             <form action="{{ route('admin.types.update', ['type' => $type->slug]) }}" method="POST">
                 <div class="modal-body">
                     @csrf
+                    @method('PUT')
                     <div class="form-group mb-2">
                         <label for="name" class="control-label m-1 text-danger ">Nome</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
