@@ -19,7 +19,7 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <h4>Non esistono post per questa categoria</h4>
+                        <h4>Non esistono progetti per questa categoria</h4>
                     </div>
                 @endforelse
             </div>
