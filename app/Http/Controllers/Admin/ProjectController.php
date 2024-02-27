@@ -93,11 +93,16 @@ class ProjectController extends Controller
     public function edit(Project $project, Request $request)
     {
         $error_message = '';
+
         if (!empty($request->all())) {
             $messages = $request->all();
             $error_message = $messages['error_message'];
         }
-        return view('admin.projects.edit', compact('project', 'error_message'));
+
+        // recupero i tipi di progetto per mostrarli nella form di creazione del progetto
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project', 'types', 'error_message'));
     }
 
     /**
@@ -109,6 +114,8 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $error_message = '';
+
         // recupero i dati inviati dalla form
         $form_data = $request->all();
 

@@ -24,6 +24,19 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
+                        <label for="type_id" class="control-label m-1 text-danger ">Tipo di progetto</label>
+                        <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror">
+                            <option value="">Seleziona tipo di progetto</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}" @selected($type->id == old('type_id', $project->type ? $project->type->id : ''))>{{ $type->name }}
+                                </option>
+                            @endforeach
+                            @error('type_id')
+                                <div class="text-danger m-1">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group my-2">
                         <label for="cover_image" class="control-label m-1 text-danger">Immagine di copertina</label>
                         @if ($project->cover_image != null)
                             <div class="my-3">
