@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Type;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -39,7 +40,24 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        // recupero i dati inviati dalla form
+        $form_data = $request->all();
+
+        // creo una nuova istanza del model Project
+        $type = new Type();
+
+        // creo lo slug del progetto
+        $slug = Str::slug($form_data['name'], '-');
+        $form_data['slug'] = $slug;
+
+        // riempio gli altri campi con la funzione fill()
+        $type->fill($form_data);
+
+        // salvo il record sul db
+        $type->save();
+
+        // effettuo il redirect alla view index
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -61,7 +79,9 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $type = Type::all();
+
+        return view('admin.types.partials.modal_edit', compact('type'));
     }
 
     /**
@@ -73,7 +93,17 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        // recupero i dati inviati dalla form
+        $form_data = $request->all();
+
+        // creo lo slug della tipologia
+        $form_data['slug'] = Str::slug($form_data['name'], '-');
+
+        // aggiorno il record sul db
+        $type->update($form_data);
+
+        // effettuo il redirect alla view index
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -84,6 +114,9 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        // elimino la tipologia dal db
+        $type->delete();
+
+        return redirect()->route('admin.types.index')->with('message', 'Hai cancellato correttamente la tipologia');
     }
 }

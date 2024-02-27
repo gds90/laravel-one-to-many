@@ -4,17 +4,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma eliminazione</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button project="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4>Sei sicuro di voler eliminare il progetto "{{ $project->title }}"?</h4>
+                <h4>Sei sicuro di voler eliminare la tipologia "{{ $project->name }}"?</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <button project="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                 <form action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Elimina</button>
+                    <button project="submit" class="btn btn-danger">Elimina</button>
                 </form>
             </div>
         </div>

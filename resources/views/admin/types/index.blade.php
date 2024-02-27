@@ -6,9 +6,11 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center ">
                     <h2 class="text-uppercase text-danger ">Lista tipologie:</h2>
-                    <a href="{{ route('admin.projects.create') }}" class="btn btn-sm btn-success">
+                    <a href="{{ route('admin.types.create') }}" class="btn btn-sm btn-success" data-bs-toggle="modal"
+                        data-bs-target="#modal_type_add">
                         <i class="fa-solid fa-plus me-2"></i>Aggiungi nuova tipologia
                     </a>
+
                 </div>
                 <table class="table table-striped border border-2 my-3 shadow">
                     <thead>
@@ -35,15 +37,18 @@
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </a>
                                         <a href="{{ route('admin.types.edit', ['type' => $type->slug]) }}"
-                                            class="btn btn-sm btn-outline-warning ms-1">
+                                            class="btn btn-sm btn-outline-warning ms-1" data-bs-toggle="modal"
+                                            data-bs-target="#modal_type_edit">
                                             <i class="fa-solid fa-edit"></i>
                                         </a>
                                         <a href="{{ route('admin.types.destroy', ['type' => $type->id]) }}"
                                             class="btn btn-sm btn-outline-danger ms-1" data-bs-toggle="modal"
-                                            data-bs-target="#modal_post_delete-{{ $type->slug }}">
+                                            data-bs-target="#modal_type_delete-{{ $type->slug }}">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
-                                        {{-- @include('admin.types.partials.modal_delete') --}}
+                                        @include('admin.types.partials.modal_delete')
+                                        @include('admin.types.partials.modal_add')
+                                        @include('admin.types.partials.modal_edit')
                                     </div>
                                 </td>
                             </tr>
