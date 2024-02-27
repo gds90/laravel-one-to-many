@@ -16,6 +16,18 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
+                        <label for="type_id" class="control-label m-1 text-danger ">Tipo di progetto</label>
+                        <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror">
+                            <option value="">Seleziona tipo di progetto</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                            @error('type_id')
+                                <div class="text-danger m-1">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group my-2">
                         <label for="cover_image" class="control-label m-1 text-danger">Immagine di copertina</label>
                         <input type="file" name="cover_image" id="cover_image"
                             class="form-control @error('cover_image') is-invalid @enderror"

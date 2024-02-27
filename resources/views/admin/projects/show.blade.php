@@ -12,8 +12,8 @@
                         <img src="{{ asset('/img/test-img.jpg') }}" alt="{{ $project->title }}">
                     @endif
                 </div>
-                <h2>Titolo: {{ $project->title }}</h2>
-
+                <h2 class="my-3">Titolo: {{ $project->title }}</h2>
+                <p>Tipologia progetto: {{ $project->type ? $project->type->name : 'Non precisato' }}</p>
                 <p>Descrizione: {{ $project->description }}</p>
                 <p>Link: {{ $project->link }}</p>
                 <div class="">

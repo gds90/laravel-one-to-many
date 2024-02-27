@@ -15,6 +15,7 @@
                         <tr>
                             <th>#</th>
                             <th>Titolo</th>
+                            <th>Tipo di progetto</th>
                             <th>Descrizione</th>
                             <th>Link</th>
                             <th>Slug</th>
@@ -26,6 +27,7 @@
                             <tr class="align-content-center">
                                 <td>{{ $project->id }}</td>
                                 <td>{{ $project->title }}</td>
+                                <td>{{ $project->type ? $project->type->name : 'Non precisato' }}</td>
                                 <td>{{ Str::limit($project->description, 100) }}</td>
                                 <td>{{ $project->link }}</td>
                                 <td>{{ $project->slug }}</td>

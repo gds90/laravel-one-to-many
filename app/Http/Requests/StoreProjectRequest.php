@@ -25,6 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|max:50|unique:projects',
+            'type_id' => 'nullable|exists:types,id',
             'cover_image' => 'nullable|image|max:2048',
             'description' => 'required',
             'link' => 'required|max:150'
@@ -37,6 +38,7 @@ class StoreProjectRequest extends FormRequest
             'title.required' => 'Il titolo del progetto è obbligatorio',
             'title.max' => 'Il titolo del progetto deve essere lungo al massimo 50 caratteri',
             'title.unique' => 'E\' già presente un progetto con questo titolo, scegline uno diverso',
+            'type_id.exists' => 'Scegli un tipo di progetto tra quelli disponbili',
             'cover_image.image' => 'Il file selezionato deve essere un\'immagine',
             'cover_image.max' => 'Il file selezionato non deve superare i 2 mb',
             'description.required' => 'La descrizione del progetto è obbligatoria',
